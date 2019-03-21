@@ -17,13 +17,13 @@ public abstract class BaseModel {
     /**
      * 创建时间
      */
-    private Date createTime;
+    public Date createTime;
 
 
-    private Date updateTime;
+    public Date updateTime;
 
     /**版本号*/
-    private Integer szVersion;
+    public  Integer szVersion;
     /**
      * 获取主键值
      * @return 主键值

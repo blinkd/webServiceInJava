@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Head first</title>
+</head>
+<body>
+    <h1 th:text = "'Hello ' + ${username}"></h1>
+    <img th:src="@{/dota1.gif}"/>
+    <br>
+    <a href="/login">Login</a>
+    <a href="/todo">Todo</a>
+    <a href="/messages">Message</a>
+    <!--<img th:src="@{/dota2.gif}"/>-->
+
+    <!--<img src="/static?file=dota2.gif"/>-->
+</body>
+</html>

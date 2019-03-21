@@ -6,10 +6,12 @@
         <result column="user_name" property="userName" jdbcType="VARCHAR" />
         <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
         <result column="sz_version" property="szVersion" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     </resultMap>
 
     <sql id="Base_Column_List" >
-        id, user_name, pass_word, sz_version
+        id, user_name, pass_word, sz_version, create_time, update_time
     </sql>
 
     <select id="getAll" resultMap="BaseResultMap"  >
@@ -33,12 +35,12 @@
     </select>
 
 
-    <insert id="insert" parameterType="com.example.demo.dal.model.User" >
+    <insert id="insertUser" parameterType="com.example.demo.dal.model.User" >
         INSERT INTO
         users
-        (userName,passWord,user_sex)
+        (user_name,pass_word,sz_version, create_time, update_time)
         VALUES
-        (#{userName}, #{passWord}, #{userSex})
+        (#{userName}, #{passWord}, #{szVersion}, now(), now())
     </insert>
 
     <update id="update" parameterType="com.example.demo.dal.model.User" >

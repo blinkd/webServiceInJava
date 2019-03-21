@@ -9,4 +9,6 @@ public interface UserMapper {
 
     User getByUserId(String id);
 
+    Boolean insertUser(User user);
+
 }

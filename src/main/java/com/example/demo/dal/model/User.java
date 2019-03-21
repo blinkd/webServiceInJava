@@ -30,6 +30,13 @@ public class User extends BaseModel {
     public User() {
         this.userName = "";
     }
+
+    public User(String userName, String passWord) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.szVersion = 1;
+    }
+
     public Long getPrimaryKey() {
         return id;
     }

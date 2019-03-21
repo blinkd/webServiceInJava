@@ -25,27 +25,29 @@ public class LoginController {
 
     private final static Logger logger= LoggerFactory.getLogger(LoginController.class);
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String hello(String username, String password, Model userModel) {
-        logger.info("username:{}", username);
-        logger.info("password:{}", password);
-
-        String message = "";
-        User loginUser = userMapper.getByUserName(username);
-        if (loginUser != null) {
-            username = loginUser.getUserName();
-            message = "登录成功";
-        } else {
-            username = "";
-            message = "用户名或密码错误";
-        }
-
-
-        userModel.addAttribute("username",username);
-        userModel.addAttribute("message", message);
-        return "login";
-
-        // return String.format("mapping url is /login/user/%s", username);
-    }
+    // @RequestMapping(value = "/login", method = RequestMethod.POST)
+    // public String login(String username, String password, Model userModel) {
+    //     logger.info("username:{}", username);
+    //     logger.info("password:{}", password);
+    //
+    //     String message = "";
+    //     User loginUser = userMapper.getByUserName(username);
+    //     if (loginUser != null) {
+    //         username = loginUser.getUserName();
+    //         message = "登录成功";
+    //
+    //
+    //     } else {
+    //         username = "";
+    //         message = "用户名或密码错误";
+    //
+    //     }
+    //
+    //     userModel.addAttribute("username",username);
+    //     userModel.addAttribute("message", message);
+    //     return "login";
+    //
+    //     // return String.format("mapping url is /login/user/%s", username);
+    // }
 
 }
