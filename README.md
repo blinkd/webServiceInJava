@@ -1,3 +1,3 @@
 # webServiceInJava
 
-#### use in spring boot
+#### spring boot + mybatis + thymeleaf
