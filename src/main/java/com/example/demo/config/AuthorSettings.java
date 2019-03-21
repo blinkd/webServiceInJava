@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-@PropertySource("classpath:config.properties")
 @ConfigurationProperties(prefix="author")
+@PropertySource("classpath:config.properties")
 public class AuthorSettings {
 
     private String name;
