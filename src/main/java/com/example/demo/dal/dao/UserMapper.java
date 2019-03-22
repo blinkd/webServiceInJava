@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 public interface UserMapper {
     User getByUserName(String userName);
 
-    User getByUserId(String id);
+    User getByUserId(Long id);
 
     Boolean insertUser(User user);
 

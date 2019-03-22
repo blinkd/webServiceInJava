@@ -7,14 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
-import org.apache.commons.lang3.StringUtils.*;
 import com.example.demo.dal.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import sun.plugin2.message.Message;
 
 
 /**
@@ -30,6 +27,7 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
+    private final static Logger logger= LoggerFactory.getLogger(UserController.class);
 
     @RequestMapping(value = "/username/{username}", method = RequestMethod.GET)
     public String hello(@PathVariable("username") String username, Model userModel) {
@@ -44,16 +42,12 @@ public class UserController {
     }
 
 
-
-    private final static Logger logger= LoggerFactory.getLogger(LoginController.class);
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(String username, String password, Model userModel) {
-
         String message = "";
         User loginUser = userMapper.getByUserName(username);
         if (loginUser != null) {
-            userModel.addAttribute("username",username);
+            userModel.addAttribute("user",loginUser);
             return "index";
 
         } else {
@@ -70,14 +64,14 @@ public class UserController {
     public String register(String username, String password, Model userModel) {
         User user = new User(username,password);
 
-
         String message = "";
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
             if (validateRegister(username, password)) {
                 boolean isSuccess = userMapper.insertUser(user);
 
                 if (isSuccess) {
-                    userModel.addAttribute("username", username);
+
+                    userModel.addAttribute("user", userMapper.getByUserName(username));
                     return "index";
                 } else {
                     message = "注册失败";

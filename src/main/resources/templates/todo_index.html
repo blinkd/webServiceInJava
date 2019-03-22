@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TODO 程序</title>
+</head>
+<body>
+    <h1>TODO</h1>
+    <form th:action="@{/todo/add/{userId}(userId=${user.id})}" method="post">
+        <input type="text" name="title" placeholder="请输入todo">
+        <br>
+        <button type="submit">添加</button>
+    </form>
+
+
+    <div th:each="todo : ${todoList}">
+        <th th:text = "${todo.id} + ':' + ${todo.title}">
+            <a th:href="@{/todo/edit/{todoId}(todoId = ${todo.id})}">编辑</a>
+            <a th:href="@{/todo/delete/{todoId}(todoId = ${todo.id})}">删除</a>
+        </th>
+    </div>
+
+</body>
+</html>

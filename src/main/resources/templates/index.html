@@ -7,11 +7,11 @@
     <title>Head first</title>
 </head>
 <body>
-    <h1 th:text = "'Hello ' + ${username}"></h1>
+    <h1 th:text = "'Hello ' + ${user.userName}"></h1>
     <img th:src="@{/dota1.gif}"/>
     <br>
     <a href="/login">Login</a>
-    <a href="/todo">Todo</a>
+    <a th:href="@{/todo/index/{userId}(userId = ${user.id})}">Todo</a>
     <a href="/messages">Message</a>
     <!--<img th:src="@{/dota2.gif}"/>-->
 

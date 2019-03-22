@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dal.dao.TodoMapper" >
+    <resultMap id="BaseResultMap" type="com.example.demo.dal.model.Todo" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="user_id" property="userId" jdbcType="BIGINT" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, title, user_id, status, create_time, update_time
+    </sql>
+
+    <select id="getAllTodoList" resultMap="BaseResultMap" parameterType="com.example.demo.dal.model.Todo" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM todo_list
+        WHERE user_id = #{userId}
+    </select>
+
+    <select id="getByUserId" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM todo_list
+        WHERE id = #{id}
+    </select>
+
+    <select id="getByUserName" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM todo_list
+        WHERE user_name = #{userName}
+    </select>
+
+
+    <insert id="addTodo" parameterType="com.example.demo.dal.model.Todo" >
+        INSERT INTO
+        todo_list
+        (title,user_id, status, create_time, update_time)
+        VALUES
+        (#{title}, #{userId}, 1, now(), now())
+    </insert>
+
+    <update id="updateTitle" parameterType="com.example.demo.dal.model.Todo" >
+        UPDATE
+        todo_list
+        SET
+        <if test="title != null"> title = #{title},</if>
+        WHERE
+        id = #{todoId}
+    </update>
+
+
+    <update id="deleteTodo" parameterType="com.example.demo.dal.model.Todo" >
+        UPDATE
+        todo_list
+        SET
+        <if test="status != null"> status = #{status},</if>
+        WHERE
+        id = #{todoId}
+    </update>
+
+</mapper>
