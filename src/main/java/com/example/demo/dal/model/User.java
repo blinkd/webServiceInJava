@@ -27,6 +27,8 @@ public class User extends BaseModel {
      */
     private String passWord;
 
+    /**版本号*/
+    public  Integer szVersion;
     public User() {
         this.userName = "";
     }

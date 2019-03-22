@@ -18,7 +18,7 @@ public class Todo extends BaseModel {
     private Long id;
 
     /**
-     * titile
+     * title
      */
     private String title;
 
@@ -31,6 +31,9 @@ public class Todo extends BaseModel {
      * 用户id
      */
     private Integer status;
+
+    public Todo() {}
+
 
     public Todo(String title, Long userId){
         this.title = title;

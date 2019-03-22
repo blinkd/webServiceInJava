@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -59,6 +61,9 @@ public class TodoController {
     private String searchTodoByUserId(User currentUser, Model modelMap) {
         if (currentUser != null) {
             List<Todo> todoList = todoMapper.getAllTodoList(currentUser.getId());
+            logger.info("todoList:{}", todoList.toString());
+
+
             modelMap.addAttribute("todoList", todoList);
             modelMap.addAttribute("user", currentUser);
             return "todo_index";

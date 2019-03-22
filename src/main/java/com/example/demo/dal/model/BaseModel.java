@@ -22,8 +22,8 @@ public abstract class BaseModel {
 
     public Date updateTime;
 
-    /**版本号*/
-    public  Integer szVersion;
+    // /**版本号*/
+    // public  Integer szVersion;
     /**
      * 获取主键值
      * @return 主键值

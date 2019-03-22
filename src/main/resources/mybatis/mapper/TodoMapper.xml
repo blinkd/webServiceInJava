@@ -14,11 +14,11 @@
         id, title, user_id, status, create_time, update_time
     </sql>
 
-    <select id="getAllTodoList" resultMap="BaseResultMap" parameterType="com.example.demo.dal.model.Todo" >
+    <select id="getAllTodoList" resultMap = "BaseResultMap" parameterType="com.example.demo.dal.model.Todo" >
         SELECT
         <include refid="Base_Column_List" />
         FROM todo_list
-        WHERE user_id = #{userId}
+        WHERE user_id = #{userId,jdbcType=BIGINT}
     </select>
 
     <select id="getByUserId" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >

@@ -14,7 +14,7 @@
         id, user_name, pass_word, sz_version, create_time, update_time
     </sql>
 
-    <select id="getAll" resultMap="BaseResultMap"  >
+    <select id="getAll" resultMap="BaseResultMap" parameterType="com.example.demo.dal.model.User" >
         SELECT
         <include refid="Base_Column_List" />
         FROM users
