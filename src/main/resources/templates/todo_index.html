@@ -16,10 +16,10 @@
 
 
     <div th:each="todo : ${todoList}">
-        <th th:text = "${todo.id} + ':' + ${todo.title}">
-            <a th:href="@{/todo/edit/{todoId}(todoId = ${todo.id})}">编辑</a>
-            <a th:href="@{/todo/delete/{todoId}(todoId = ${todo.id})}">删除</a>
-        </th>
+        <th th:text = "${todo.id} + ':' + ${todo.title}"> </th>
+        <a th:href="@{/todo/edit/{todoId}(todoId = ${todo.id})}">编辑</a>
+        <a th:href="@{/todo/delete/{todoId}(todoId = ${todo.id})}">删除</a>
+
     </div>
 
 </body>

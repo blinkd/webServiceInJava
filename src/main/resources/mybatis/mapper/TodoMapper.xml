@@ -18,14 +18,14 @@
         SELECT
         <include refid="Base_Column_List" />
         FROM todo_list
-        WHERE user_id = #{userId,jdbcType=BIGINT}
+        WHERE user_id = #{userId,jdbcType=BIGINT} AND status = 1
     </select>
 
-    <select id="getByUserId" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >
+    <select id="getByTodoId" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >
         SELECT
         <include refid="Base_Column_List" />
         FROM todo_list
-        WHERE id = #{id}
+        WHERE id = #{todoId}
     </select>
 
     <select id="getByUserName" parameterType="com.example.demo.dal.model.Todo" resultMap="BaseResultMap" >
@@ -34,7 +34,6 @@
         FROM todo_list
         WHERE user_name = #{userName}
     </select>
-
 
     <insert id="addTodo" parameterType="com.example.demo.dal.model.Todo" >
         INSERT INTO
@@ -48,17 +47,17 @@
         UPDATE
         todo_list
         SET
-        <if test="title != null"> title = #{title},</if>
+        <if test="title != null"> title = #{title}</if>
         WHERE
-        id = #{todoId}
+        id = #{id}
     </update>
 
 
-    <update id="deleteTodo" parameterType="com.example.demo.dal.model.Todo" >
+    <update id="deleteTodo" parameterType="java.lang.Long" >
         UPDATE
         todo_list
         SET
-        <if test="status != null"> status = #{status},</if>
+        status = -1
         WHERE
         id = #{todoId}
     </update>

@@ -10,9 +10,11 @@ public interface TodoMapper {
 
     Boolean addTodo(Todo todo);
 
-    Boolean updateTitle(String title, Integer todoId);
+    Boolean updateTitle(Todo todo);
 
     List<Todo> getAllTodoList(Long userId);
 
-    Boolean deleteTodo(Integer todoId);
+    Todo getByTodoId(Long todoId);
+
+    Boolean deleteTodo(Long todoId);
 }

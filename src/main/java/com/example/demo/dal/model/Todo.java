@@ -3,6 +3,8 @@ package com.example.demo.dal.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.swing.border.TitledBorder;
+
 /**
  * @ClassName: Todo
  * @Auther: zhengchen
@@ -34,6 +36,9 @@ public class Todo extends BaseModel {
 
     public Todo() {}
 
+    public Todo(String title) {
+        this.title = title;
+    }
 
     public Todo(String title, Long userId){
         this.title = title;

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>修改 TODO 程序</title>
@@ -7,8 +9,8 @@
 <body>
     <h1>TODO</h1>
     <form action="/todo/update" method="post">
-        <input type="text" name="id" value="{{todo.id}}" hidden>
-        <input type="text" name="title" value="{{todo.title}}">
+        <input type="text" name="id" th:value="${todo.id}" hidden>
+        <input type="text" name="title" th:value="${todo.title}">
         <br>
         <button type="submit">提交修改</button>
     </form>
